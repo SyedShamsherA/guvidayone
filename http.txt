@@ -1,0 +1,41 @@
+HTTP - Hyper Text Transfer Protocol, is the foundation of the World Wide Web, and is used to load webpages.
+
+Question 1 - What's the difference between HTTP1.1 and HTTP2?
+Answer - HTTP1.1 - 
+
+1. Developed by Timothy Berners-Lee in 1989 as a communication standard for the WOrld Wide Web, Http is a top level application
+   protocol that exchanges information between a client computer and a local or remote web server.
+2. In this process, a client sends a text based request to server by calling method like GET or POST, in response, the server sends
+   a resource like an HTML page back to the client.
+3. In Http1.1 have persistent connections and pipelining, with persistent connection, it assumes that TCP connection should  be kept 
+   open unless directly told to close, allow clients to send multiple request with the same connection.
+4. In HTTP1.1, since multiple data packets cannot pass each other when travelling to the same destination, there are situations in
+   which a request at the head of the queue that cannot retrieve its required resource will block all the request behind it, which
+   is known as head-of-line blocking and is a signficant problem with optimizing connection efficiency.
+5. In HTTP1.1 flow control replies on underlying TCP connection, when the connection initiates both the client and server
+   establish there buffer sizes using their sytem default setting.
+   If receiver's buffer is partially filled with data, it will tell the sender its receive window, i.e., the amount of available
+   space that remains in its bufferThis receive window is advertised in a signal known as an ACK packet, which is the data packet
+   that the receiver sends to acknowledge that it received the opening signal.
+6. Because HTTP/1.1 relies on the transport layer to avoid buffer overflow, each new TCP connection requires a separate flow 
+   control mechanism.
+
+HTTP2 - 
+
+1. HTTP2 began as the SPDY protocol, developed primarily at GOOGLE with the intention of reducing web page load latency by using 
+   techniques such as compression, multiplexing and prioritization, this protocol serve as a template when the hyper text transfer
+   protocol working group httpbis of the IETF (Internet ENgineering Task FOrce) put the standard together, culminating in the 
+   publication of HTTP2.
+2. From a technical point of view, one of the most significant features that distinguishes both HTTP1.1 and 2 is the binary frame
+   layering, which can be thought of as part of the application layer in the internet protocol stack.
+3. In HTTP2, the binary frame layering encodes requests/responses and cut them into smaller packets of information, greatly 
+   increasing the flexibility of data transfer.
+4. HTTP2 establishes a single connection object between the two machines, within this connection there are multiple streams of data.
+   Each stream consists of multiple messages in the familiar requests/response format. FInally, each of these messages split into 
+   smaller units called frames.
+5. HTTP/2 multiplexes streams of data within a single TCP connection. As a result, receive windows on the level of the TCP connection
+   are not sufficient to regulate the delivery of individual streams.
+6. HTTP/2 solves this problem by allowing the client and server to implement their own flow controls, rather than relying on the transport
+   layer.
+7. Since HTTP/2 enables multiple concurrent responses to a client’s initial GET request, a server can send a resource to a client along with 
+   the requested HTML page, providing the resource before the client asks for it. This process is called server push.
